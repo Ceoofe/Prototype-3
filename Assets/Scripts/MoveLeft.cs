@@ -17,6 +17,14 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 60;
+        }
+        else
+        {
+            speed = 30;
+        }
         if (PlayerControllerScript.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
@@ -24,6 +32,15 @@ public class MoveLeft : MonoBehaviour
 
         if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
         {
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                PlayerController.score += 2;
+            }
+            else
+            {
+                PlayerController.score += 1;
+            }
+            Debug.Log("Score: " + PlayerController.score);
             Destroy(gameObject);
         }
     }

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     private AudioSource playerAudio;
+    bool doublejump = true;
+    public static int score;
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +25,40 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
+        score = 0;
+        Debug.Log("Score: " + score);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        if(Input.GetKey(KeyCode.LeftShift))
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            dirtParticle.Stop();
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
+           playerAnim.SetFloat("Speed_f", 3f); 
+        }
+        else
+        {
+            playerAnim.SetFloat("Speed_f", 1f); 
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Space) && !gameOver)
+        {
+            if (isOnGround)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+                playerAnim.SetTrigger("Jump_trig");
+                dirtParticle.Stop();
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+                doublejump = true;
+            }
+            else if (doublejump)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                doublejump = false;
+                playerAnim.SetTrigger("Jump_trig");
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+            }
         }
     }
 

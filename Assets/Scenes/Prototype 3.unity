@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6173136815717493912, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
+      propertyPath: run
+      value: 
+      objectReference: {fileID: 7400002, guid: 7039333667ba45840b1411867278ee2e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
 --- !u!1 &170076733
@@ -604,7 +608,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a6bfa31f1bd4ef380ef246a773b376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 6635930364646228768, guid: 559fa816d025a46daa9696681b4e6fbd, type: 3}
+  obstaclePrefab:
+  - {fileID: 6635930364646228768, guid: 559fa816d025a46daa9696681b4e6fbd, type: 3}
+  - {fileID: 6361838096435359276, guid: b6b69e43a077441019a3c3c42327cbe6, type: 3}
+  - {fileID: 8731186523871456972, guid: f7f064a3448334a17a72ae609d2b0059, type: 3}
+  - {fileID: 4120085494899900721, guid: a62943b59758246468dce352da9d24ae, type: 3}
+  - {fileID: 4186739397156323024, guid: 72265a0d1bf904a3487a60d408017c30, type: 3}
 --- !u!4 &1072368049
 Transform:
   m_ObjectHideFlags: 0
